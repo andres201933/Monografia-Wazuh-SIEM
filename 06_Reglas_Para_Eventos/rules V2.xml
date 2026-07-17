@@ -1,4 +1,6 @@
-</group>
+<!-- Añadir estas reglas en local_rules.xml -->
+
+
 <group name="custom_windows_users">
     <rule id="100002" level="10">
         <if_sid>60109</if_sid>
