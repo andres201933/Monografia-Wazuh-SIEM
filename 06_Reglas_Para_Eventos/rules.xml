@@ -1,0 +1,39 @@
+<!-- Añadir estas reglas en local_rules.xml -->
+
+<group name="windows,users,">
+  <rule id="100002" level="10">
+    <decoded_as>windows</decoded_as>
+    <field name="eventID">4720</field>
+    <description>Detección de creación de nuevo usuario en Windows</description>
+  </rule>
+</group>
+
+
+<group name="windows,nmap,">
+  <rule id="100003" level="12">
+    <if_group>windows</if_group>
+    <field name="eventID">5156</field>
+    <description>Conexión de red permitida por el Firewall de Windows - posible actividad de escaneo</description>
+    <group>recon,nmap_scan,</group>
+  </rule>
+</group>
+
+<group name="windows,auth_failed,">
+  <rule id="100004" level="9">
+    <decoded_as>windows</decoded_as>
+    <field name="eventID">4625</field>
+    <description>Intento fallido de inicio de sesión en Windows - posible fuerza bruta</description>
+    <group>authentication_failed,brute_force,</group>
+  </rule>
+</group>
+
+<group name="syscheck,">
+  <rule id="100010" level="7">
+    <if_sid>554</if_sid>
+    <description>Archivo crítico eliminado detectado por Syscheck</description>
+    <group>file_integrity,file_deleted,</group>
+    <mitre>
+      <id>T1070.004</id>
+    </mitre>
+  </rule>
+</group>
