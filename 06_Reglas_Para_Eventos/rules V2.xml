@@ -1,0 +1,41 @@
+</group>
+<group name="custom_windows_users">
+    <rule id="100002" level="10">
+        <if_sid>60109</if_sid>
+        <field name="win.system.eventID">^4720$</field>
+        <description>Detección personalizada de creación de usuario en Windows</description>
+        <group>windows,custom,account_created,</group>
+    </rule>
+</group>
+
+<group name="windows,auth_failed,">
+  <rule id="100004" level="9">
+    <if_sid>60122</if_sid>
+    <field name="win.system.eventID">^4625$</field>
+    <description>Intento fallido de autenticación - posible fuerza bruta</description>
+    <group>authentication_failed,brute_force,custom,</group>
+  </rule>
+</group>
+
+<group name="syscheck,">
+  <rule id="100010" level="7">
+    <if_sid>553</if_sid>
+    <description>Archivo crítico eliminado detectado por Syscheck</description>
+    <group>file_integrity,file_deleted,</group>
+    <mitre>
+      <id>T1070.004</id>
+    </mitre>
+  </rule>
+</group>
+
+<group name="linux,nmap,">
+  <rule id="100100" level="10">
+    <if_sid>5402</if_sid>
+    <field name="data.command">/usr/bin/nmap</field>
+    <description>Deteccion de ejecucion de NMAP</description>
+     <group>linux,nmap,reconnaissance,custom,</group>
+    <mitre>
+      <id>T1595</id>
+    </mitre>
+  </rule>
+</group>
