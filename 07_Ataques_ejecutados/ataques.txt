@@ -1,0 +1,9 @@
+#Acceso remoto mediantexfreerdp para ataques de fuerza bruta
+
+xfreerdp /u:Victima /v:192.168.100.178
+
+#Si pide primero instalación de xfreerdp presiona Y
+
+#Escaneo nmap simple
+
+nmap -sS 192.168.100.178
